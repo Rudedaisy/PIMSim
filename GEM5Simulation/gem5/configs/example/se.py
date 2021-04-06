@@ -269,8 +269,8 @@ if options.ruby:
 else:
     MemClass = Simulation.setMemClass(options)
     if not options.mem_type.startswith("HMC"):
-        system.membus = IOXBar()#SystemXBar()
-
+        system.membus = SystemXBar()#IOXBar()#SystemXBar() ####### might be necessary for PIM
+        #system.membus = IOXBar()
 
     MemConfig.config_mem(options, system)
     CacheConfig.config_cache(options, system)

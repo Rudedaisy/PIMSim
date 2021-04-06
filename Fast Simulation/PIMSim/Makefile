@@ -1,5 +1,5 @@
 ﻿compile:
-	msbuild PIMSim.csproj
+	dotnet msbuild PIMSim.csproj
 
 clean:
 	rm /bin/Debug/*

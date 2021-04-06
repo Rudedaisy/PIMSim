@@ -296,14 +296,14 @@ def config_mem(options, system):
             for pid in range(num_kernels):
 		if(options.kernel_type=="adder"):
                     _kernel = PIMAdder()
+		elif(options.kernel_type=="multiplier"):
+		    _kernel = PIMMultiplier()
+		elif(options.kernel_type=="divider"):
+		    _kernel = PIMDivider()
+                elif(options.kernel_type=="mac"):
+                    _kernel = PIMMAC()
 		else:
-		    if(options.kernel_type=="multiplier"):
-			_kernel = PIMMultiplier()
-		    else:
-			if(options.kernel_type=="divider"):
-			    _kernel = PIMDivider()
-			else:
-			    fatal("no pim kernel type specified.")
+		    fatal("no pim kernel type specified.")
                 vd = VoltageDomain(voltage="1.0V")
                 _kernel.clk_domain = SrcClockDomain(clock="1GHz", voltage_domain=vd)
                 _kernel.id = pid

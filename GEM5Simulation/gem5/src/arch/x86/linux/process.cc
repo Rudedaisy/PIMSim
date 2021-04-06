@@ -298,11 +298,11 @@ static SyscallDesc syscallDescs64[] = {
     /*  75 */ SyscallDesc("fdatasync", unimplementedFunc),
     /*  76 */ SyscallDesc("truncate", truncateFunc),
     /*  77 */ SyscallDesc("ftruncate", ftruncateFunc),
-#if defined(SYS_getdents)
+    //#if defined(SYS_getdents)
     /*  78 */ SyscallDesc("getdents", getdentsFunc),
-#else
-    /*  78 */ SyscallDesc("getdents", unimplementedFunc),
-#endif
+    //#else
+    ///*  78 */ SyscallDesc("getdents", unimplementedFunc),
+    //#endif
     /*  79 */ SyscallDesc("getcwd", getcwdFunc),
     /*  80 */ SyscallDesc("chdir", chdirFunc),
     /*  81 */ SyscallDesc("fchdir", unimplementedFunc),

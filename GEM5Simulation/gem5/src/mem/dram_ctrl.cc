@@ -622,10 +622,10 @@ DRAMCtrl::recvTimingReq(PacketPtr pkt)
 
     panic_if(pkt->cacheResponding(), "Should not see packets where cache "
              "is responding");
-
+    
     panic_if(!(pkt->isRead() || pkt->isWrite()),
              "Should only see read and writes at memory controller\n");
-
+    
     // Calc avg gap between requests
     if (prevArrival != 0) {
         totGap += curTick() - prevArrival;

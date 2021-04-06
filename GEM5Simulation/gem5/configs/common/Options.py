@@ -399,7 +399,7 @@ def addPIMOptions(parser):
                       choices=["cpu", "kernel", "hybrid"],
 		      help = "type of pim kernel inside the memory to use")
     parser.add_option("--kernel-type", type="choice", default="adder",
-                      choices=["adder", "multiplier", "divider"],
+                      choices=["adder", "multiplier", "divider", "mac"],
 		      help = "type of pim kernel inside the memory to use")
     parser.add_option("--num-pim-kernels", type="int", default=0,
                   help="Number of in-memory kernels")

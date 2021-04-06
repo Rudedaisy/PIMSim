@@ -397,7 +397,7 @@ PIMKernel::tick()
 	    if(toProc>=_input&&toProc<_input+_output&&inputReady()){
 		if(!computeEvent.scheduled()){
 
-			schedule(computeEvent,clockEdge((Cycles)_latency));	
+		  schedule(computeEvent,clockEdge((Cycles)_latency)); /////////////// ADD ENERGY COST HERE AND IGNORE DRAM READ/WRITE	
 		
 		}
 		

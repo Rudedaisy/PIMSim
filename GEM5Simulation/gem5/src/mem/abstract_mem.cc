@@ -452,7 +452,7 @@ AbstractMemory::functionalAccess(PacketPtr pkt)
 	if(senderState->isComplete()){
 	    DPRINTF(PIM, "Remove PIM operations from the Queue [0x%lx] [0x%lx] -> [0x%lx]\n",senderState->addr[0],senderState->addr[1],senderState->addr[2]);
 	    bool found=false;
-	    bool threadid=-1;
+	    int threadid=-1;
 	    std::vector<Packet::PIMSenderState *>::iterator index;
 	    for(auto i=pendingPIMqueue.begin();i!=pendingPIMqueue.end();i++){
 		if((*i)->addr[0]==senderState->addr[0]&&(*i)->addr[0]==senderState->addr[0]&&(*i)->addr[0]==senderState->addr[0]){
@@ -462,7 +462,7 @@ AbstractMemory::functionalAccess(PacketPtr pkt)
 		    break;
 		}
 	    }
-	    assert(found&&threadid>=0);
+	    assert(found&&(threadid>=0));
 
 	    
             BaseCPU* cpu=(BaseCPU*)SimObject::find("system.cpu");

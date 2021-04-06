@@ -86,6 +86,7 @@ uint64_t m5a_getid(void);
 
 // @PIM
 void PIM(uint64_t in1, uint64_t in2, uint64_t out1);
+//void PIM(uint64_t in1, uint64_t in2, uint64_t in3, uint64_t out1); //Ed: doesn't seem to work
 void PIMProcess(int pim_id);
 void HostProcess();
 
