@@ -31,9 +31,9 @@ from m5.proxy import *
 from m5.objects.MemObject import MemObject
 from m5.objects.PIMKernel import PIMKernel
 
-class PIMMAC(PIMKernel):
-    type = 'PIMMAC'
-    cxx_header = "pim/pim_mac.hh"
+class PIMPR(PIMKernel):
+    type = 'PIMPR'
+    cxx_header = "pim/pim_pr.hh"
 
 
 

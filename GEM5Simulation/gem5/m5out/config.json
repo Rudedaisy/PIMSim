@@ -64,8 +64,8 @@
         "load_offset": 0, 
         "pim_kernerls": [
             {
-                "latency": 1000, 
-                "addr_base": 536870912, 
+                "latency": 28500000, 
+                "addr_base": 1073741824, 
                 "name": "pim_kernerls", 
                 "p_state_clk_gate_min": 1000, 
                 "output": 1, 
@@ -99,19 +99,19 @@
                     "role": "MASTER"
                 }, 
                 "addr_ranges": [
-                    "536870912:536870912:0:0:0:0"
+                    "1073741824:1073741824:0:0:0:0"
                 ], 
                 "eventq_index": 0, 
-                "cxx_class": "PIMAdder", 
+                "cxx_class": "PIMPR", 
                 "p_state_clk_gate_max": 1000000000000, 
                 "path": "system.pim_kernerls", 
                 "mem_port": {
                     "peer": "system.membus.master[0]", 
                     "role": "SLAVE"
                 }, 
-                "type": "PIMAdder", 
+                "type": "PIMPR", 
                 "id": 0, 
-                "computeEnergy": 1e-12, 
+                "computeEnergy": 2.484e-11, 
                 "input": 2
             }
         ], 
@@ -135,7 +135,7 @@
             "domain_id": -1
         }, 
         "mem_ranges": [
-            "0:536870911:0:0:0:0"
+            "0:1073741823:0:0:0:0"
         ], 
         "eventq_index": 0, 
         "default_p_state": "UNDEFINED", 
@@ -480,7 +480,7 @@
                     "role": "MASTER"
                 }, 
                 "p_state_clk_gate_bins": 20, 
-                "pim_base_addr": 536870912, 
+                "pim_base_addr": 1073741824, 
                 "p_state_clk_gate_min": 1000, 
                 "syscallRetryLatency": 10000, 
                 "interrupts": [
@@ -540,7 +540,7 @@
                         "pid": 100, 
                         "kvmInSE": false, 
                         "cxx_class": "Process", 
-                        "executable": "./tests/test-progs/pim-hello/hellopim", 
+                        "executable": "../../PageRank/step2-PIM", 
                         "drivers": [], 
                         "system": "system", 
                         "gid": 100, 
@@ -557,7 +557,7 @@
                         "path": "system.cpu.workload", 
                         "name": "workload", 
                         "cmd": [
-                            "./tests/test-progs/pim-hello/hellopim"
+                            "../../PageRank/step2-PIM"
                         ], 
                         "errout": "cerr", 
                         "useArchPT": false, 
@@ -920,7 +920,7 @@
                 "tRAS": 35000, 
                 "static_frontend_latency": 10000, 
                 "devices_per_rank": 8, 
-                "range": "0:536870911:6:19:0:0", 
+                "range": "0:1073741823:6:19:0:0", 
                 "mem_sched_policy": "frfcfs", 
                 "IDD2P12": 0.0, 
                 "device_rowbuffer_size": 1024, 

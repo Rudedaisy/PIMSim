@@ -302,6 +302,8 @@ def config_mem(options, system):
 		    _kernel = PIMDivider()
                 elif(options.kernel_type=="mac"):
                     _kernel = PIMMAC()
+                elif(options.kernel_type=="pr"):
+                    _kernel = PIMPR()
 		else:
 		    fatal("no pim kernel type specified.")
                 vd = VoltageDomain(voltage="1.0V")

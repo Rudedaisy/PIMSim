@@ -27,6 +27,7 @@ finishEvent([this]{ finish(); }, "PIMKernel finish data process",
           false, Event::Default_Pri),
 _id(p->id),
 _latency(p->latency),
+_op_latency(p->latency),
 _computeEnergy(p->computeEnergy),
 _input(p->input),
 _output(p->output),
@@ -398,9 +399,9 @@ PIMKernel::tick()
 	    if(toProc>=_input&&toProc<_input+_output&&inputReady()){
 		if(!computeEvent.scheduled()){
 
-		  schedule(computeEvent,clockEdge((Cycles)_latency)); /////////////// ADD ENERGY COST HERE AND IGNORE DRAM READ/WRITE	
+		  schedule(computeEvent,clockEdge((Cycles)_op_latency));
 		  totalComputeCycles += (Cycles)_latency;
-		  totalEnergy += static_cast<double>(_computeEnergy * 1000000000000);
+		  //totalEnergy += static_cast<double>(_computeEnergy * 1000000000000);
 		}
 		
 	    }else{

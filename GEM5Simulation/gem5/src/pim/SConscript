@@ -44,6 +44,9 @@ Source('pim_multiplier.cc')
 SimObject('PIMMAC.py')
 Source('pim_mac.cc')
 
+SimObject('PIMPR.py')
+Source('pim_pr.cc')
+
 DebugFlag('PIM')
 
 

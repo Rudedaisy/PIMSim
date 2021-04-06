@@ -161,6 +161,7 @@ public:
     int _id;
 
     int _latency;
+    int _op_latency;
     double _computeEnergy;
   
     int _input;
