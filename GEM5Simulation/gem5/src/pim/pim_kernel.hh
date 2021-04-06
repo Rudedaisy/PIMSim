@@ -161,7 +161,8 @@ public:
     int _id;
 
     int _latency;
-
+    double _computeEnergy;
+  
     int _input;
 
     int _output;
@@ -189,7 +190,9 @@ public:
     Stats::Scalar retry_failed;
     Stats::Scalar active_cycle;
     Stats::Scalar retry_cycle;
-
+    Stats::Scalar totalEnergy;
+    Stats::Scalar totalComputeCycles;
+  
     PacketPtr retry_pkt;
 
 public:

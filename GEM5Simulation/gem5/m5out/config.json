@@ -65,7 +65,7 @@
         "pim_kernerls": [
             {
                 "latency": 1000, 
-                "addr_base": 1073741824, 
+                "addr_base": 536870912, 
                 "name": "pim_kernerls", 
                 "p_state_clk_gate_min": 1000, 
                 "output": 1, 
@@ -99,7 +99,7 @@
                     "role": "MASTER"
                 }, 
                 "addr_ranges": [
-                    "1073741824:1073741824:0:0:0:0"
+                    "536870912:536870912:0:0:0:0"
                 ], 
                 "eventq_index": 0, 
                 "cxx_class": "PIMAdder", 
@@ -111,6 +111,7 @@
                 }, 
                 "type": "PIMAdder", 
                 "id": 0, 
+                "computeEnergy": 1e-12, 
                 "input": 2
             }
         ], 
@@ -134,7 +135,7 @@
             "domain_id": -1
         }, 
         "mem_ranges": [
-            "0:1073741823:0:0:0:0"
+            "0:536870911:0:0:0:0"
         ], 
         "eventq_index": 0, 
         "default_p_state": "UNDEFINED", 
@@ -479,7 +480,7 @@
                     "role": "MASTER"
                 }, 
                 "p_state_clk_gate_bins": 20, 
-                "pim_base_addr": 1073741824, 
+                "pim_base_addr": 536870912, 
                 "p_state_clk_gate_min": 1000, 
                 "syscallRetryLatency": 10000, 
                 "interrupts": [
@@ -539,7 +540,7 @@
                         "pid": 100, 
                         "kvmInSE": false, 
                         "cxx_class": "Process", 
-                        "executable": "/root/hostCurUser/PIMSim/GEM5Simulation/gem5/../../PageRank/step3", 
+                        "executable": "./tests/test-progs/pim-hello/hellopim", 
                         "drivers": [], 
                         "system": "system", 
                         "gid": 100, 
@@ -556,7 +557,7 @@
                         "path": "system.cpu.workload", 
                         "name": "workload", 
                         "cmd": [
-                            "/root/hostCurUser/PIMSim/GEM5Simulation/gem5/../../PageRank/step3"
+                            "./tests/test-progs/pim-hello/hellopim"
                         ], 
                         "errout": "cerr", 
                         "useArchPT": false, 
@@ -919,7 +920,7 @@
                 "tRAS": 35000, 
                 "static_frontend_latency": 10000, 
                 "devices_per_rank": 8, 
-                "range": "0:1073741823:6:19:0:0", 
+                "range": "0:536870911:6:19:0:0", 
                 "mem_sched_policy": "frfcfs", 
                 "IDD2P12": 0.0, 
                 "device_rowbuffer_size": 1024, 

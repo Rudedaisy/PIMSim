@@ -27,6 +27,7 @@ finishEvent([this]{ finish(); }, "PIMKernel finish data process",
           false, Event::Default_Pri),
 _id(p->id),
 _latency(p->latency),
+_computeEnergy(p->computeEnergy),
 _input(p->input),
 _output(p->output),
 pim_addr_base(p->addr_base),
@@ -398,7 +399,8 @@ PIMKernel::tick()
 		if(!computeEvent.scheduled()){
 
 		  schedule(computeEvent,clockEdge((Cycles)_latency)); /////////////// ADD ENERGY COST HERE AND IGNORE DRAM READ/WRITE	
-		
+		  totalComputeCycles += (Cycles)_latency;
+		  totalEnergy += static_cast<double>(_computeEnergy * 1000000000000);
 		}
 		
 	    }else{
@@ -589,6 +591,14 @@ PIMKernel::regStats(){
     retry_cycle
 	.name(name() + ".retry_cycle")
 	.desc("the retry cycles of the kernel");
+
+    totalEnergy
+      .name(name() + ".totalEnergy")
+      .desc("total energy consumed by MAGIC operations (pJ)");
+
+    totalComputeCycles
+      .name(name() + ".totalComputeCycles")
+      .desc("total cycles spent computing MAGIC operations");
 }
 
 PIMKernel::dataType
