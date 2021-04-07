@@ -2384,16 +2384,16 @@ DRAMCtrl::Rank::updatePowerStats()
 
     // The energy components inside the power lib are calculated over
     // the window so accumulate into the corresponding gem5 stat
-    actEnergy += energy.act_energy * memory.devicesPerRank;
-    preEnergy += energy.pre_energy * memory.devicesPerRank;
+    //actEnergy += energy.act_energy * memory.devicesPerRank;
+    //preEnergy += energy.pre_energy * memory.devicesPerRank;
     readEnergy += energy.read_energy * memory.devicesPerRank;
     writeEnergy += energy.write_energy * memory.devicesPerRank;
-    refreshEnergy += energy.ref_energy * memory.devicesPerRank;
-    actBackEnergy += energy.act_stdby_energy * memory.devicesPerRank;
-    preBackEnergy += energy.pre_stdby_energy * memory.devicesPerRank;
-    actPowerDownEnergy += energy.f_act_pd_energy * memory.devicesPerRank;
-    prePowerDownEnergy += energy.f_pre_pd_energy * memory.devicesPerRank;
-    selfRefreshEnergy += energy.sref_energy * memory.devicesPerRank;
+    //refreshEnergy += energy.ref_energy * memory.devicesPerRank;
+    //actBackEnergy += energy.act_stdby_energy * memory.devicesPerRank;
+    //preBackEnergy += energy.pre_stdby_energy * memory.devicesPerRank;
+    //actPowerDownEnergy += energy.f_act_pd_energy * memory.devicesPerRank;
+    //prePowerDownEnergy += energy.f_pre_pd_energy * memory.devicesPerRank;
+    //selfRefreshEnergy += energy.sref_energy * memory.devicesPerRank;
 
     // Accumulate window energy into the total energy.
     totalEnergy += energy.window_energy * memory.devicesPerRank;

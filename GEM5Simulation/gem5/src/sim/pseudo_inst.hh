@@ -90,9 +90,18 @@ void workbegin(ThreadContext *tc, uint64_t workid, uint64_t threadid);
 void workend(ThreadContext *tc, uint64_t workid, uint64_t threadid);
 void togglesync(ThreadContext *tc);
 
-
+struct glob{
+  float* p;
+  float* val;
+  int* row_ptr;
+  int* col_ind;
+  int n;
+};
+  
 // @PIM
 bool PIM(ThreadContext *tc, uint64_t in1, uint64_t in2, uint64_t out1);
+//bool PIM(ThreadContext *tc, struct glob in1, float* in2, float* out1);
+//bool PIM(ThreadContext *tc, uint64_t in1, uint64_t in2, uint64_t in3, uint64_t in4, uint64_t in5, uint64_t out1);  
 void PIMProcess(ThreadContext *tc, int pim_id);
 void HostProcess(ThreadContext *tc);
 

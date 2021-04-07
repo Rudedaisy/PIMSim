@@ -34,24 +34,28 @@ PIMPR::doCompute(){
 	// data[1]: p_new
 	// data[2]: p_new
 
-	struct glob *ptrs = (struct glob*)&data[0];
-	float* p_new = (float*)&data[2];
+	
+	//struct glob *ptrs = (struct glob*)data[0];
+	//float* p_new = (float*)data[2];
+	//int* row_ptr = (int*)data[1];
+	int n = (int)data[0];
 	
 	//p_new[col_ind[curcol]] = p_new[col_ind[curcol]] + val[curcol] * p[i];
-	for(i=0; i<ptrs->n; i++){
-	  rowel = ptrs->row_ptr[i+1] - ptrs->row_ptr[i];
+	for(i=0; i<n; i++){
+	  //rowel = row_ptr[i+1] - row_ptr[i];
+	  rowel = 50;
 	  for (j=0; j<rowel; j++) {
-	    p_new[ptrs->col_ind[curcol]] = p_new[ptrs->col_ind[curcol]] + ptrs->val[curcol] * ptrs->p[i];
+	    //p_new[ptrs->col_ind[curcol]] = p_new[ptrs->col_ind[curcol]] + ptrs->val[curcol] * ptrs->p[i];
 	    curcol++;
 	    totMACs++;
 	  }
 	}
-
-	_op_latency =_latency * totMACs;
+	
+	_op_latency =_latency; // * totMACs;
 	totalEnergy += static_cast<double>(_computeEnergy * totMACs * 1000000000000);
 	
-	//return (dataType)(data[2]);
-	return (dataType)(p_new);
+	return (dataType)(data[2]);
+	//return (dataType)(p_new);
 }
 
 PIMPR *

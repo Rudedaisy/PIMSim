@@ -200,6 +200,7 @@ pseudoInst(ThreadContext *tc, uint8_t func, uint8_t subfunc)
       // @PIM PIM kernel command
       case M5OP_ANNOTATE:
 	PIM(tc, args[0], args[1], args[2]);
+	//PIM(tc, args[0], args[1], args[2], args[3], args[4], args[5]);
 	break;
       // @PIM PIM processor command
       case M5OP_RESERVED2:
