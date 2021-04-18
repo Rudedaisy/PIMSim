@@ -432,17 +432,18 @@ void
 AbstractMemory::functionalAccess(PacketPtr pkt)
 {
 
-
-
     if(pkt->isPIM()){
 
 	Packet::PIMSenderState* senderState = dynamic_cast<Packet::PIMSenderState*>(pkt->senderState);
 	assert(senderState);
+	Packet::PIMSenderState* senderSourceState = new Packet::PIMSenderState(senderState->cycle, senderState->addr[0], senderState->addr[1], senderState->addr[1], senderState->id);
 
 	if(senderState->isRegistration()){
 
-	    pendingPIMqueue.push_back(senderState);
-
+	    //pendingPIMqueue.push_back(senderState);
+	    // Only insert PIM reads (sources) to PIMqueue
+	    pendingPIMqueue.push_back(senderSourceState);
+	  
 	    DPRINTF(PIM, "Add PIM operations to the Queue [0x%lx] [0x%lx] -> [0x%lx]\n",senderState->addr[0],senderState->addr[1],senderState->addr[2]);
 	
 	    pkt->popLabel();

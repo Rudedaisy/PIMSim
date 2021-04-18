@@ -2975,7 +2975,7 @@ DRAMCtrl::MemoryPort::recvTimingReq(PacketPtr pkt)
     //return memory.recvTimingReq(pkt);
     if(!pkt->isPIM()&&pkt->isWrite()&&memory.stalledAddr(pkt)){
 	DPRINTF(PIM, "Conflct; Initiate rollback\n",pkt->getAddr());
-    	restartPIM(pkt);
+    	//restartPIM(pkt);
     }
     return memory.recvTimingReq(pkt);
 }
