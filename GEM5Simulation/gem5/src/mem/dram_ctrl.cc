@@ -2968,10 +2968,15 @@ bool
 DRAMCtrl::MemoryPort::recvTimingReq(PacketPtr pkt)
 {
     // pass it to the memory controller
-    if(!pkt->isPIM()&&(pkt->isRead()||pkt->isWrite())&&memory.stalledAddr(pkt)){
-	DPRINTF(PIM, "Packet blocked by coherence [%llx]\n",pkt->getAddr());
-	return false;
-    } 
+    //if(!pkt->isPIM()&&(pkt->isRead()||pkt->isWrite())&&memory.stalledAddr(pkt)){
+	//DPRINTF(PIM, "Packet blocked by coherence [%llx]\n",pkt->getAddr());
+	//return false;
+    //} 
+    //return memory.recvTimingReq(pkt);
+    if(!pkt->isPIM()&&pkt->isWrite()&&memory.stalledAddr(pkt)){
+	DPRINTF(PIM, "Conflct; Initiate rollback\n",pkt->getAddr());
+    	restartPIM();
+    }
     return memory.recvTimingReq(pkt);
 }
 
