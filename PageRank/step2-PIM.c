@@ -14,6 +14,14 @@
    CSR representation of matrix A
 */
 
+struct glob{
+  float* p;
+  float* val;
+  int* row_ptr;
+  int* col_ind;
+  int n;
+};
+
 int main(){
   printf("%d\n", INT_MAX);
   /*************************** TIME, VARIABLES ***************************/
@@ -21,6 +29,7 @@ int main(){
   // Keep track of the execution time
   clock_t begin, end;
   double time_spent;
+  struct glob* ptrs = malloc(sizeof(ptrs));
   begin = clock();
 
   
@@ -193,7 +202,15 @@ int main(){
   // Initialize new p vector
   //float p_new[n];
   float* p_new = calloc(n, sizeof(float));
+
   
+  ptrs->p = p;
+  ptrs->val = val;
+  ptrs->row_ptr = row_ptr;
+  ptrs->col_ind = col_ind;
+  ptrs->n = n;
+  
+
   while (looping){
 
     printf("Loop %d\n", loopnum++);
@@ -205,7 +222,8 @@ int main(){
     
     int rowel = 0;
     int curcol = 0;
-    
+
+    /*
     // Page rank modified algorithm 
     for(i=0; i<n; i++){
       rowel = row_ptr[i+1] - row_ptr[i];
@@ -215,6 +233,9 @@ int main(){
         curcol++;
       }
     }
+    */
+    PIM((uint64_t)&n, (uint64_t)&ptrs, (uint64_t)&p_new);
+    //PIM(ptrs, (uint64_t)&p_new, (uint64_t)&p_new);
     printf("DONE computing one iteration\n");
     
     /*DEBUG: print pnew
