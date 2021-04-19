@@ -323,7 +323,8 @@ class AbstractMemory : public MemObject
 public:
 
     std::vector<Packet::PIMSenderState *> pendingPIMqueue;
-    bool stalledAddr(PacketPtr pkt);
+    //bool stalledAddr(PacketPtr pkt);
+    Packet::PIMSenderState* stalledAddr(PacketPtr pkt);
     bool checkPIMReady();
     void functionalData(Addr addr, int size, uint8_t * res);
     std::string cpu_type;

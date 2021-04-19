@@ -1092,6 +1092,7 @@ TimingSimpleCPU::stopCurrent(PacketPtr pkt, int id){
 	mem = (AbstractMemory*)SimObject::find("system.hmc_dev.mem_ctrls00");
     }
     assert(mem);
+    /*
     if(mem&&mem->stalledAddr(pkt)){
 	DPRINTF(PIM, "The access is blocked by PIM Coherence [%lx]\n",pkt->getAddr());
         SimpleExecContext &t_info = *threadInfo[curThread];
@@ -1099,6 +1100,7 @@ TimingSimpleCPU::stopCurrent(PacketPtr pkt, int id){
         suspendContext(thread->contextId());
 	return true;
     }
+    */
     return false;
 }
 bool

@@ -476,7 +476,7 @@ AbstractMemory::functionalAccess(PacketPtr pkt)
     for(int i=0;i<cpu->pCaches.size();i++){
 	for(int j=0;j<3;j++){
         if(cpu->pCaches[i]->check_addr((*index)->addr[j])){
-            cpu->pCaches[i]->flushPIM((*index)->addr[j]);
+	    cpu->pCaches[i]->flushPIM((*index)->addr[j]);
         }
 	}
     }
@@ -535,14 +535,17 @@ AbstractMemory::checkPIMReady(){
 
 }
 
-bool
+//bool
+Packet::PIMSenderState*
 AbstractMemory::stalledAddr(PacketPtr pkt){
 	
-	for(auto i =pendingPIMqueue.begin();i!=pendingPIMqueue.end();i++){
-		for(int j=0;j<(*i)->addr.size();j++){
-			if((*i)->addr[j]/((uint64_t)coherence_granularity)==pkt->getAddr()/((uint64_t)coherence_granularity))
-				return true;
-		}
-	}
-	return false;
+  for(auto i =pendingPIMqueue.begin();i!=pendingPIMqueue.end();i++){
+    for(int j=0;j<(*i)->addr.size();j++){
+      if((*i)->addr[j]/((uint64_t)coherence_granularity)==pkt->getAddr()/((uint64_t)coherence_granularity))
+	//return true;
+	return dynamic_cast<Packet::PIMSenderState*>(*i);
+    }
+  }
+  //return false;
+  return NULL;
 }

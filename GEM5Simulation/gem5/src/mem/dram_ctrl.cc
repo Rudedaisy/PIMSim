@@ -2967,17 +2967,24 @@ DRAMCtrl::MemoryPort::recvAtomic(PacketPtr pkt)
 bool
 DRAMCtrl::MemoryPort::recvTimingReq(PacketPtr pkt)
 {
+  if(!pkt->isPIM()&&pkt->isWrite()){
+    DPRINTF(PIM, "Checking CPU write addr [%llx] against PIMqueue\n", pkt->getAddr());
+  }
     // pass it to the memory controller
     //if(!pkt->isPIM()&&(pkt->isRead()||pkt->isWrite())&&memory.stalledAddr(pkt)){
-	//DPRINTF(PIM, "Packet blocked by coherence [%llx]\n",pkt->getAddr());
+        //DPRINTF(PIM, "Packet blocked by coherence [%llx]\n",pkt->getAddr());
 	//return false;
     //} 
-    //return memory.recvTimingReq(pkt);
-    if(!pkt->isPIM()&&pkt->isWrite()&&memory.stalledAddr(pkt)){
-	DPRINTF(PIM, "Conflct; Initiate rollback\n",pkt->getAddr());
+    return memory.recvTimingReq(pkt);
+    
+    Packet::PIMSenderState* commandPkt = memory.stalledAddr(pkt);
+    if(!pkt->isPIM()&&pkt->isWrite()&&(commandPkt!=NULL)){
+	DPRINTF(PIM, "Conflct with addr [%llx]; Initiate PIM rollback\n",pkt->getAddr());
+	PIMKernel** pk_list=(PIMKernel**)SimObject::find("system.pim_kernerls");
     	//restartPIM(pkt);
     }
     return memory.recvTimingReq(pkt);
+    
 }
 
 DRAMCtrl*
