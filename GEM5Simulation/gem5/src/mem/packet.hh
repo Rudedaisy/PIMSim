@@ -515,9 +515,10 @@ class Packet : public Printable
     	    }
 
     	    PIMSenderState(Tick _tick, Addr _addr1, Addr _addr2, Addr _addr3, int _id = 0): cycle(_tick), id(_id),pid(0),procid(-1),physical(false),command(Control){
-		addr.push_back(_addr1);
-		addr.push_back(_addr2);
-		addr.push_back(_addr3);
+	      addr.push_back(_addr1);
+	      addr.push_back(_addr2); 
+	      addr.push_back(_addr3);
+	     
     	    }
     	    PIMSenderState( Addr _addr1, Addr _addr2, Addr _addr3, int _id): id(_id),pid(0),procid(-1),physical(true),command(Complete){
 		addr.push_back(_addr1);

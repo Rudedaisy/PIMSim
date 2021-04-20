@@ -1092,12 +1092,16 @@ TimingSimpleCPU::stopCurrent(PacketPtr pkt, int id){
 	mem = (AbstractMemory*)SimObject::find("system.hmc_dev.mem_ctrls00");
     }
     assert(mem);
-    if(mem&&mem->stalledAddr(pkt)){
-	DPRINTF(PIM, "The access is blocked by PIM Coherence [%lx]\n",pkt->getAddr());
-        SimpleExecContext &t_info = *threadInfo[curThread];
-        SimpleThread* thread = t_info.thread;
-        suspendContext(thread->contextId());
-	return true;
+    if(mem&&mem->stalledAddr(pkt)&&!pkt->isPIM()&&pkt->isWrite()){
+	DPRINTF(PIM, "ROLLBACK triggered at address [%llx]\n",pkt->getAddr());
+        PIMKernel* pk_list=(PIMKernel*)SimObject::find("system.pim_kernerls");
+        pk_list->status = PIMKernel::Status::SendRetry;
+	
+	//DPRINTF(PIM, "The access is blocked by PIM Coherence [%lx]\n",pkt->getAddr());
+        //SimpleExecContext &t_info = *threadInfo[curThread];
+        //SimpleThread* thread = t_info.thread;
+        //suspendContext(thread->contextId());
+	//return true;
     }
     return false;
 }

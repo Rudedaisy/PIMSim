@@ -209,8 +209,10 @@ int main(){
   ptrs->row_ptr = row_ptr;
   ptrs->col_ind = col_ind;
   ptrs->n = n;
-  
 
+  int eov = 2;
+  PIM((uint64_t)&eov, (uint64_t)&n, (uint64_t)&e);
+  
   while (looping){
 
     printf("Loop %d\n", loopnum++);
@@ -234,8 +236,26 @@ int main(){
       }
     }
     */
-    PIM((uint64_t)&n, (uint64_t)&ptrs, (uint64_t)&p_new);
-    //PIM(ptrs, (uint64_t)&p_new, (uint64_t)&p_new);
+    //PIM((uint64_t)&n, (uint64_t)&ptrs, (uint64_t)&p_new);
+    //PIM((uint64_t)&col_ind, (uint64_t)&val, (uint64_t)&p);
+    eov = 1;
+    PIM((uint64_t)&eov, (uint64_t)&(p[0]), (uint64_t)&(p_new[0]));
+    
+    /*
+    eov = 0;
+    for(i=0; i<n; i++){
+      PIM((uint64_t)&eov, (uint64_t)&p[i], (uint64_t)&p_new[i]);
+    }
+    for(i=0; i<e; i++){
+      if(i==e-1){
+	eov = 1;
+      }
+      else {
+	eov = 0;
+      }
+      PIM((uint64_t)&eov, (uint64_t)&col_ind[i], (uint64_t)&val[i]);
+    }
+    */
     printf("DONE computing one iteration\n");
     
     /*DEBUG: print pnew

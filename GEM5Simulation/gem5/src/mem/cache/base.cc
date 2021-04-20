@@ -2295,12 +2295,15 @@ bool
 BaseCache::CpuSidePort::recvTimingReq(PacketPtr pkt)
 {
     assert(pkt->isRequest());
-    //if(!pkt->isPIM()&&pkt->isWrite()){
-    //  DPRINTF(PIM, "Checking CPU cache write addr [%llx] against PIMqueue\n", pkt->getAddr());
-    //}
-    //mem = (AbstractMemory*)SimObject::find("system.hmc_dev.mem_ctrls00");
+
     AbstractMemory* mem = (AbstractMemory*)SimObject::find("system.mem_ctrls");
-    printf("Stalled addr returns %d\n", mem->stalledAddr(pkt));
+    Packet::PIMSenderState* commandPkt = mem->stalledAddr(pkt);
+    if(!pkt->isPIM()&&(pkt->isWrite())&&commandPkt!=NULL){
+        DPRINTF(PIM, "ROLLBACK triggered at address [%llx]\n",pkt->getAddr());
+        PIMKernel* pk_list=(PIMKernel*)SimObject::find("system.pim_kernerls");
+	pk_list->status = PIMKernel::Status::SendRetry;
+    }
+    
     if (cache->system->bypassCaches()) {
         // Just forward the packet if caches are disabled.
         // @todo This should really enqueue the packet rather

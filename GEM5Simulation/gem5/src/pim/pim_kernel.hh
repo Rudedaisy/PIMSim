@@ -130,6 +130,7 @@ public:
     Status status;
 
     typedef PIMKernelParams Params;
+    std::vector<Packet::PIMSenderState *> pendingPIMqueue;
 
     PIMKernel(const Params *p);
 
@@ -145,8 +146,6 @@ protected:
     std::vector<Regs> data;
 
 
-    std::vector<Packet::PIMSenderState *> pendingPIMqueue;
-    
 protected:
 
     EventFunctionWrapper tickEvent;

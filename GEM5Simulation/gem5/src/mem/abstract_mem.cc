@@ -534,15 +534,19 @@ AbstractMemory::checkPIMReady(){
 
 }
 
-bool
+Packet::PIMSenderState*
 AbstractMemory::stalledAddr(PacketPtr pkt){
-	
+  
+  //PIMKernel* pk=(PIMKernel*)SimObject::find("system.pim_kernerls");
+  
 	for(auto i =pendingPIMqueue.begin();i!=pendingPIMqueue.end();i++){
-		for(int j=0;j<(*i)->addr.size();j++){
-		  DPRINTF(PIM, "Addr [%llx] inside PIMqueue\n",(*i)->addr[j]);
-			if((*i)->addr[j]/((uint64_t)coherence_granularity)==pkt->getAddr()/((uint64_t)coherence_granularity))
-				return true;
-		}
+	  for(int j=0;j<(*i)->addr.size();j++){
+	    //DPRINTF(PIM, "Addr [0x%lx] inside PIMqueue\n",(*i)->addr[j]);
+	    if((*i)->addr[j]/((uint64_t)coherence_granularity)==pkt->getAddr()/((uint64_t)coherence_granularity)) {
+	      DPRINTF(PIM, "Addr [0x%lx] COLLISION inside PIMqueue\n",(*i)->addr[j]/((uint64_t)coherence_granularity));
+	      return dynamic_cast<Packet::PIMSenderState*>(*i);
+	    }
+	  }
 	}
-	return false;
+	return NULL;
 }
