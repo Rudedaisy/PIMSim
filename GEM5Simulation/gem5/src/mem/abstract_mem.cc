@@ -539,6 +539,7 @@ AbstractMemory::stalledAddr(PacketPtr pkt){
 	
 	for(auto i =pendingPIMqueue.begin();i!=pendingPIMqueue.end();i++){
 		for(int j=0;j<(*i)->addr.size();j++){
+		  DPRINTF(PIM, "Addr [%llx] inside PIMqueue\n",(*i)->addr[j]);
 			if((*i)->addr[j]/((uint64_t)coherence_granularity)==pkt->getAddr()/((uint64_t)coherence_granularity))
 				return true;
 		}

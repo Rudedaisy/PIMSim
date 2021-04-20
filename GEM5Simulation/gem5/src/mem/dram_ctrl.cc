@@ -2967,6 +2967,12 @@ DRAMCtrl::MemoryPort::recvAtomic(PacketPtr pkt)
 bool
 DRAMCtrl::MemoryPort::recvTimingReq(PacketPtr pkt)
 {
+  if(!pkt->isPIM()&&pkt->isWrite()){
+    DPRINTF(PIM, "Checking CPU write addr [%llx] against PIMqueue\n", pkt->getAddr());
+  }
+  //if(!pkt->isPIM()&&pkt->isRead()){
+  //  DPRINTF(PIM, "Checking CPU read addr [%llx] against PIMqueue\n", pkt->getAddr());
+  //}
     // pass it to the memory controller
     if(!pkt->isPIM()&&(pkt->isRead()||pkt->isWrite())&&memory.stalledAddr(pkt)){
 	DPRINTF(PIM, "Packet blocked by coherence [%llx]\n",pkt->getAddr());

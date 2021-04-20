@@ -57,6 +57,7 @@
 #include "mem/cache/mshr.hh"
 #include "mem/cache/prefetch/base.hh"
 #include "mem/cache/queue_entry.hh"
+#include "mem/abstract_mem.hh"
 #include "params/BaseCache.hh"
 #include "params/WriteAllocator.hh"
 #include "sim/core.hh"
@@ -2294,7 +2295,12 @@ bool
 BaseCache::CpuSidePort::recvTimingReq(PacketPtr pkt)
 {
     assert(pkt->isRequest());
-
+    //if(!pkt->isPIM()&&pkt->isWrite()){
+    //  DPRINTF(PIM, "Checking CPU cache write addr [%llx] against PIMqueue\n", pkt->getAddr());
+    //}
+    //mem = (AbstractMemory*)SimObject::find("system.hmc_dev.mem_ctrls00");
+    AbstractMemory* mem = (AbstractMemory*)SimObject::find("system.mem_ctrls");
+    printf("Stalled addr returns %d\n", mem->stalledAddr(pkt));
     if (cache->system->bypassCaches()) {
         // Just forward the packet if caches are disabled.
         // @todo This should really enqueue the packet rather
