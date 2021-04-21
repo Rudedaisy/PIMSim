@@ -401,7 +401,7 @@ PIMKernel::tick()
 
 		  schedule(computeEvent,clockEdge((Cycles)_op_latency));
 		  totalComputeCycles += (Cycles)_latency;
-		  totalEnergy += static_cast<double>(_computeEnergy * 1000000000000);
+		  //totalEnergy += static_cast<double>(_computeEnergy * 1000000000000);
 		}
 		
 	    }else{

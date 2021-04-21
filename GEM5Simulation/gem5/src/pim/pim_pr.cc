@@ -61,7 +61,7 @@ PIMPR::doCompute(){
 	  printf("n = %d\n", n); 
 	  printf("MAC count = %d\n", totMACs);
 	  _op_latency =_latency;
-          totalEnergy += static_cast<double>(_computeEnergy * totMACs * 1000000000000);
+          totalEnergy += static_cast<double>(_computeEnergy * 1000000000000);
 	}
         else{
 	  assert(false);
