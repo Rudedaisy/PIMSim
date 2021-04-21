@@ -9,6 +9,7 @@ class PIMPR : public PIMKernel
 public:
     
     typedef PIMPRParams Params;
+    int n = 100;
     PIMPR(const Params *p);
     virtual dataType doCompute() override;
 

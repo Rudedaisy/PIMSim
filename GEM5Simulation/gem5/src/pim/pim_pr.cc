@@ -34,7 +34,7 @@ PIMPR::doCompute(){
 	// data[1]: p_new
 	// data[2]: p_new
 
-	int n = 0;
+	//int n = 0;
 	//int e = 0;
 	
 	//struct glob *ptrs = (struct glob*)data[0];
@@ -44,7 +44,8 @@ PIMPR::doCompute(){
 	// data[0]: 2 if data[1] contains n, data[2] contains e
 	// data[0]: 1 if contains end of vector (eov)
 	if((int)data[0] == 2) {
-	  n = (int)data[1];
+	  //assert(n==0);
+	  //n = (int)data[1];
 	  //e = (int)data[2];
 	  _op_latency = 1;
 	}
@@ -57,11 +58,13 @@ PIMPR::doCompute(){
 	      totMACs++;
 	    }
 	  }
-	  
+	  printf("n = %d\n", n); 
+	  printf("MAC count = %d\n", totMACs);
 	  _op_latency =_latency;
           totalEnergy += static_cast<double>(_computeEnergy * totMACs * 1000000000000);
 	}
         else{
+	  assert(false);
           _op_latency =	1;
 	}
 
