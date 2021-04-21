@@ -36,7 +36,7 @@ class PIMKernel(MemObject):
 
     id = Param.Int(0, "ID of the kernel")
     latency = Param.Latency("28.5us", "Calculation delay")
-    computeEnergy = Param.Float(0.00000000002484, "Calculation energy")
+    computeEnergy = Param.Float(0.00000716, "Calculation energy")
     
     input = Param.Int(2, "inputs")
 
