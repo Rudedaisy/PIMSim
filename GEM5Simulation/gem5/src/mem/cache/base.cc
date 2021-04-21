@@ -2299,7 +2299,7 @@ BaseCache::CpuSidePort::recvTimingReq(PacketPtr pkt)
     AbstractMemory* mem = (AbstractMemory*)SimObject::find("system.mem_ctrls");
     Packet::PIMSenderState* commandPkt = mem->stalledAddr(pkt);
     if(!pkt->isPIM()&&(pkt->isWrite())&&commandPkt!=NULL){
-        DPRINTF(PIM, "ROLLBACK triggered at address [%llx]\n",pkt->getAddr());
+      //DPRINTF(PIM, "ROLLBACK triggered at address [%llx]\n",pkt->getAddr());
         PIMKernel* pk_list=(PIMKernel*)SimObject::find("system.pim_kernerls");
 	pk_list->status = PIMKernel::Status::SendRetry;
     }

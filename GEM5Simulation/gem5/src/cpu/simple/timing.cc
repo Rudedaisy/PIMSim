@@ -1093,7 +1093,7 @@ TimingSimpleCPU::stopCurrent(PacketPtr pkt, int id){
     }
     assert(mem);
     if(mem&&mem->stalledAddr(pkt)&&!pkt->isPIM()&&pkt->isWrite()){
-	DPRINTF(PIM, "ROLLBACK triggered at address [%llx]\n",pkt->getAddr());
+      //DPRINTF(PIM, "ROLLBACK triggered at address [%llx]\n",pkt->getAddr());
         PIMKernel* pk_list=(PIMKernel*)SimObject::find("system.pim_kernerls");
         pk_list->status = PIMKernel::Status::SendRetry;
 	
