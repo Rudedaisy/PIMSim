@@ -278,7 +278,7 @@
                         "indexing_policy": {
                             "name": "indexing_policy", 
                             "eventq_index": 0, 
-                            "assoc": 4, 
+                            "assoc": 2, 
                             "cxx_class": "SetAssociative", 
                             "path": "system.cpu.icache.tags.indexing_policy", 
                             "entry_size": 64, 
@@ -287,7 +287,7 @@
                         }, 
                         "system": "system", 
                         "sequential_access": false, 
-                        "assoc": 4, 
+                        "assoc": 2, 
                         "power_model": [], 
                         "cxx_class": "BaseSetAssoc", 
                         "p_state_clk_gate_max": 1000000000000, 
@@ -312,7 +312,7 @@
                     "name": "icache", 
                     "p_state_clk_gate_bins": 20, 
                     "sequential_access": false, 
-                    "assoc": 4
+                    "assoc": 2
                 }, 
                 "function_trace": false, 
                 "do_checkpoint_insts": true, 
@@ -590,7 +590,7 @@
                         "indexing_policy": {
                             "name": "indexing_policy", 
                             "eventq_index": 0, 
-                            "assoc": 4, 
+                            "assoc": 2, 
                             "cxx_class": "SetAssociative", 
                             "path": "system.cpu.dcache.tags.indexing_policy", 
                             "entry_size": 64, 
@@ -599,7 +599,7 @@
                         }, 
                         "system": "system", 
                         "sequential_access": false, 
-                        "assoc": 4, 
+                        "assoc": 2, 
                         "power_model": [], 
                         "cxx_class": "BaseSetAssoc", 
                         "p_state_clk_gate_max": 1000000000000, 
@@ -624,7 +624,7 @@
                     "name": "dcache", 
                     "p_state_clk_gate_bins": 20, 
                     "sequential_access": false, 
-                    "assoc": 4
+                    "assoc": 2
                 }, 
                 "path": "system.cpu", 
                 "tracer": {
@@ -754,7 +754,7 @@
                 "indexing_policy": {
                     "name": "indexing_policy", 
                     "eventq_index": 0, 
-                    "assoc": 8, 
+                    "assoc": 4, 
                     "cxx_class": "SetAssociative", 
                     "path": "system.l2.tags.indexing_policy", 
                     "entry_size": 64, 
@@ -763,7 +763,7 @@
                 }, 
                 "system": "system", 
                 "sequential_access": false, 
-                "assoc": 8, 
+                "assoc": 4, 
                 "power_model": [], 
                 "cxx_class": "BaseSetAssoc", 
                 "p_state_clk_gate_max": 1000000000000, 
@@ -788,7 +788,7 @@
             "name": "l2", 
             "p_state_clk_gate_bins": 20, 
             "sequential_access": false, 
-            "assoc": 8
+            "assoc": 4
         }, 
         "cpu_voltage_domain": {
             "name": "cpu_voltage_domain", 
