@@ -4,11 +4,11 @@ sim_seconds                                  0.039256                       # Nu
 sim_ticks                                 39256493500                       # Number of ticks simulated
 final_tick                                39256493500                       # Number of ticks from beginning of simulation (restored from checkpoints and never reset)
 sim_freq                                 1000000000000                       # Frequency of simulated ticks
-host_inst_rate                                 638878                       # Simulator instruction rate (inst/s)
-host_op_rate                                  1202906                       # Simulator op (including micro ops) rate (op/s)
-host_tick_rate                             4199256161                       # Simulator tick rate (ticks/s)
-host_mem_usage                                1877084                       # Number of bytes of host memory used
-host_seconds                                     9.35                       # Real time elapsed on the host
+host_inst_rate                                 564287                       # Simulator instruction rate (inst/s)
+host_op_rate                                  1062462                       # Simulator op (including micro ops) rate (op/s)
+host_tick_rate                             3708974296                       # Simulator tick rate (ticks/s)
+host_mem_usage                                1877044                       # Number of bytes of host memory used
+host_seconds                                    10.58                       # Real time elapsed on the host
 sim_insts                                     5972494                       # Number of instructions simulated
 sim_ops                                      11245283                       # Number of ops (including micro ops) simulated
 system.voltage_domain.voltage                       1                       # Voltage in Volts
@@ -273,7 +273,7 @@ system.pim_kernerls.write_packets                   3                       # th
 system.pim_kernerls.read_retry                      6                       # the amount of pim kernel read retry
 system.pim_kernerls.write_retry                     0                       # the amount of pim kernel write retry
 system.pim_kernerls.retry_failed                    0                       # the amount of failed pim kernel requests
-system.pim_kernerls.active_cycle                  306                       # the active cycles of the kernel
+system.pim_kernerls.active_cycle             28500289                       # the active cycles of the kernel
 system.pim_kernerls.retry_cycle                     3                       # the retry cycles of the kernel
 system.pim_kernerls.totalEnergy              14320000                       # total energy consumed by MAGIC operations (pJ)
 system.pim_kernerls.totalComputeCycles       85500000                       # total cycles spent computing MAGIC operations
