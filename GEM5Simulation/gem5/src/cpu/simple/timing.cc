@@ -1098,10 +1098,10 @@ TimingSimpleCPU::stopCurrent(PacketPtr pkt, int id){
         pk_list->status = PIMKernel::Status::SendRetry;
 	
 	//DPRINTF(PIM, "The access is blocked by PIM Coherence [%lx]\n",pkt->getAddr());
-        //SimpleExecContext &t_info = *threadInfo[curThread];
-        //SimpleThread* thread = t_info.thread;
-        //suspendContext(thread->contextId());
-	//return true;
+        SimpleExecContext &t_info = *threadInfo[curThread];
+        SimpleThread* thread = t_info.thread;
+        suspendContext(thread->contextId());
+	return true;
     }
     return false;
 }

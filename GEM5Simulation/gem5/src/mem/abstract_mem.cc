@@ -536,7 +536,7 @@ AbstractMemory::checkPIMReady(){
 
 Packet::PIMSenderState*
 AbstractMemory::stalledAddr(PacketPtr pkt){
-  
+  return NULL;
   //PIMKernel* pk=(PIMKernel*)SimObject::find("system.pim_kernerls");
   
 	for(auto i =pendingPIMqueue.begin();i!=pendingPIMqueue.end();i++){
