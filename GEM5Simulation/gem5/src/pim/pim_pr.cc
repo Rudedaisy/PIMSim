@@ -43,6 +43,7 @@ PIMPR::doCompute(){
 
 	// data[0]: 2 if data[1] contains n, data[2] contains e
 	// data[0]: 1 if contains end of vector (eov)
+
 	if((int)data[0] == 2) {
 	  //assert(n==0);
 	  //n = (int)data[1];
@@ -60,7 +61,8 @@ PIMPR::doCompute(){
 	  }
 	  printf("n = %d\n", n); 
 	  printf("MAC count = %d\n", totMACs);
-	  _op_latency = 1;
+	  _op_latency = _latency;
+	  //_op_latency = 1;
           totalEnergy += static_cast<double>(_computeEnergy * 1000000000000);
 	}
         else{
