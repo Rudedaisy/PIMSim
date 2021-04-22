@@ -2,7 +2,7 @@
 import random
 random.seed(1)
 
-numNodes = 1000
+numNodes = 500
 
 sources = []
 dests = []
